@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <!-- Zone du haut (environ 45 %) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/upperZone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/turquoise"
+        android:padding="16dp"
+        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_app"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Source -->
+        <Spinner
+            android:id="@+id/spDeviseSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitre" />
+
+        <TextView
+            android:id="@+id/tvMontant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="48sp"
+            android:background="@drawable/bottom_line"
+            app:layout_constraintBottom_toBottomOf="@id/spDeviseSource"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/spDeviseSource"
+            app:layout_constraintTop_toTopOf="@id/spDeviseSource" />
+
+        <!-- Bouton Inverser -->
+        <ImageButton
+            android:id="@+id/btnInverser"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Invert"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:rotation="90"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spDeviseSource"
+            app:layout_constraintBottom_toTopOf="@id/spDeviseCible"/>
+
+        <!-- Cible -->
+        <Spinner
+            android:id="@+id/spDeviseCible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnInverser" />
+
+        <TextView
+            android:id="@+id/tvResultat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="0.00"
+            android:textColor="@color/black"
+            android:textSize="48sp"
+            android:background="@drawable/bottom_line"
+            app:layout_constraintBottom_toBottomOf="@id/spDeviseCible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/spDeviseCible"
+            app:layout_constraintTop_toTopOf="@id/spDeviseCible" />
+
+        <Button
+            android:id="@+id/btnConvertir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_convertir"
+            android:backgroundTint="@color/turquoise_dark"
+            android:textColor="@color/white"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Zone du bas : clavier numérique -->
+    <TableLayout
+        android:id="@+id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/keyboard_bg"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/upperZone">
+
+        <TableRow android:layout_weight="1">
+            <Button
+                android:id="@+id/btn7"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="7"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn8"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="8"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn9"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="9"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <Button
+                android:id="@+id/btn4"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="4"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn5"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="5"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn6"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="6"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <Button
+                android:id="@+id/btn1"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="1"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn2"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="2"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn3"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="3"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <Button
+                android:id="@+id/btnC"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="C"
+                android:textColor="@color/red_light"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btn0"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="0"
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+            <Button
+                android:id="@+id/btnDot"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="."
+                android:textColor="@color/turquoise_dark"
+                android:textSize="32sp" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
